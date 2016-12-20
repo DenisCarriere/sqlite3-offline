@@ -1,6 +1,16 @@
-# node-mbtiles
+# SQLite3 for offline
 
 NodeJS MBTiles for offline deployments
+
+## Install
+
+```bash
+$ npm install --save sqlite3-offline
+```
+
+```javascript
+const sqlite = require('sqlite3-offline')
+```
 
 ## Supported Platforms
 

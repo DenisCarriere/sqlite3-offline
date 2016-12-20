@@ -1,20 +1,13 @@
 {
-  "name": "node-mbtiles",
+  "name": "sqlite3-offline",
   "version": "0.1.0",
-  "description": "NodeJS MBTiles for offline libraries",
+  "description": "SQLite3 for offline",
   "main": "index.js",
   "jsnext:main": "index.js",
-  "scripts": {
-    "test": "npm run lint && jest --coverage",
-    "docs": "tsc && cat HEADER.md > README.md && documentation build index.js -c documentation.yml -f md --shallow >> README.md && cat CHANGELOG.md >> README.md",
-    "lint": "tsc && tslint index.ts index.test.ts && documentation lint index.js"
-  },
-  "bin": {
-    "geocode": "cli.js"
-  },
+  "scripts": { },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DenisCarriere/node-mbtiles.git"
+    "url": "git+https://github.com/DenisCarriere/sqlite3-offline.git"
   },
   "author": "Denis Carriere <carriere.denis@gmail.com>",
   "contributors": [
@@ -22,17 +15,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DenisCarriere/node-mbtiles/issues"
+    "url": "https://github.com/DenisCarriere/sqlite3-offline/issues"
   },
-  "homepage": "https://github.com/DenisCarriere/node-mbtiles#readme",
-  "devDependencies": {
-    "@types/jest": "16.0.1",
-    "@types/node": "0.0.2",
-    "documentation": "4.0.0-beta10",
-    "jest-cli": "17.0.3",
-    "tslint": "3.15.1",
-    "typescript": "2.0.10"
-  },
+  "homepage": "https://github.com/DenisCarriere/sqlite3-offline#readme",
   "keywords": [],
   "testEnvironment": "node",
   "dependencies": {}
