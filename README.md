@@ -1,6 +1,8 @@
 # SQLite3 for offline
 
-SQLite3 for offline deployments.
+Bundled library for [SQLite3](https://github.com/mapbox/node-sqlite3) for offline deployments.
+
+Zero dependencies, zero external HTTP downloads.
 
 ## Install
 
