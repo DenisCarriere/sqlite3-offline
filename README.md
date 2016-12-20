@@ -1,6 +1,6 @@
 # SQLite3 for offline
 
-NodeJS MBTiles for offline deployments
+SQLite3 for offline deployments.
 
 ## Install
 
