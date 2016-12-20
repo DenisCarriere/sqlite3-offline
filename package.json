@@ -20,5 +20,6 @@
   "homepage": "https://github.com/DenisCarriere/sqlite3-offline#readme",
   "keywords": [],
   "testEnvironment": "node",
-  "dependencies": {}
+  "dependencies": {},
+  "types": "index.d.ts"
 }
