@@ -1,14 +1,23 @@
 const path = require('path')
-const version = 'node-v51'
 
-if (['darwin', 'win32', 'linux'].indexOf(process.platform) === -1) {
-    throw new Error('Operating system not compatible')
+const PLATFORM = process.platform
+const ARCH = process.arch
+const MODULES = process.versions.modules
+const NODE = process.versions.node
+
+if (['darwin', 'win32', 'linux'].indexOf(PLATFORM) === -1) {
+    throw new Error(`Operating system ${platform} not compatible`)
 }
 
-if (process.arch !== 'x64') {
-    throw new Error('Arch Type not compatible')
+if (ARCH !== 'x64') {
+    throw new Error(`Arch ${ARCH} not compatible`)
 }
 
-const sqlite3 = require(path.join(__dirname, 'sqlite3', `${version}-${process.platform}-${process.arch}`, 'node_sqlite3'))
+if (['51'].indexOf(MODULES) === -1) {
+    throw new Error(`NodeJS ${NODE} Module ${MODULES} not compatible`)
+}
+
+const name = `node-v${MODULES}-${PLATFORM}-${ARCH}`
+const sqlite3 = require(path.join(__dirname, 'sqlite3', name, 'node_sqlite3'))
 
 module.exports = sqlite3

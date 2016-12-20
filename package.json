@@ -1,10 +1,12 @@
 {
   "name": "sqlite3-offline",
-  "version": "3.1.8",
+  "version": "3.1.8-beta1",
   "description": "SQLite3 for offline",
   "main": "index.js",
   "jsnext:main": "index.js",
-  "scripts": { },
+  "scripts": {
+    "test": "jest --coverage"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DenisCarriere/sqlite3-offline.git"
@@ -21,5 +23,8 @@
   "keywords": [],
   "testEnvironment": "node",
   "dependencies": {},
-  "types": "index.d.ts"
+  "types": "index.d.ts",
+  "devDependencies": {
+    "jest-cli": "^18.0.0"
+  }
 }
