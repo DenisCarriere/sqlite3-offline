@@ -24,5 +24,5 @@ const sqlite = require('sqlite3-offline')
 
 - Node.js v7.x
 - Node.js v6.x
-- Node.js v5.x
-- Node.js v4.x
+- ~~Node.js v5.x~~
+- ~~Node.js v4.x~~
