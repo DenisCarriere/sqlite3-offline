@@ -19,3 +19,10 @@ const sqlite = require('sqlite3-offline')
 - Windows x64
 - MacOSX x64
 - Linux x64
+
+## Supported NodeJS Release
+
+- Node.js v7.x
+- Node.js v6.x
+- Node.js v5.x
+- Node.js v4.x
