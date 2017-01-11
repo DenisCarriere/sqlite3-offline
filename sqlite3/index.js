@@ -13,7 +13,7 @@ if (ARCH !== 'x64') {
     throw new Error(`Arch ${ARCH} not compatible`)
 }
 
-if (['51', '48', '47', '46'].indexOf(MODULES) === -1) {
+if (['51', '50', '48'].indexOf(MODULES) === -1) {
     throw new Error(`NodeJS ${NODE} Module ${MODULES} not compatible`)
 }
 

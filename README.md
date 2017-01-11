@@ -19,6 +19,7 @@ const sqlite = require('sqlite3-offline')
 - Windows x64
 - MacOSX x64
 - Linux x64
+- Electron
 
 ## Supported NodeJS Release
 
