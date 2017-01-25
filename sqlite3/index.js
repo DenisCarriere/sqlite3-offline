@@ -5,12 +5,16 @@ const ARCH = process.arch
 const MODULES = process.versions.modules
 const NODE = process.versions.node
 
+if (PLATFORM === undefined) {
+  throw new Error('Web Browsers are not compatible with sqlite3-offline')
+}
+
 if (['darwin', 'win32', 'linux'].indexOf(PLATFORM) === -1) {
   throw new Error(`Operating system ${PLATFORM} not compatible`)
 }
 
 if (ARCH !== 'x64') {
-  throw new Error(`Arch ${ARCH} not compatible`)
+  throw new Error(`Only x64 arch is supported`)
 }
 
 if (['51', '50', '48'].indexOf(MODULES) === -1) {
