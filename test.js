@@ -1,4 +1,5 @@
 var sqlite3 = require('./')
 
-var db = new sqlite3.Database(':memory:')
-console.log(db)
+describe('sqlite3', () => {
+  test(':memory:', () => expect(new sqlite3.Database(':memory:')).toBeDefined())
+})

@@ -6,15 +6,15 @@ const MODULES = process.versions.modules
 const NODE = process.versions.node
 
 if (['darwin', 'win32', 'linux'].indexOf(PLATFORM) === -1) {
-    throw new Error(`Operating system ${platform} not compatible`)
+  throw new Error(`Operating system ${PLATFORM} not compatible`)
 }
 
 if (ARCH !== 'x64') {
-    throw new Error(`Arch ${ARCH} not compatible`)
+  throw new Error(`Arch ${ARCH} not compatible`)
 }
 
 if (['51', '50', '48'].indexOf(MODULES) === -1) {
-    throw new Error(`NodeJS ${NODE} Module ${MODULES} not compatible`)
+  throw new Error(`NodeJS ${NODE} Module ${MODULES} not compatible`)
 }
 
 const name = `node-v${MODULES}-${PLATFORM}-${ARCH}`
