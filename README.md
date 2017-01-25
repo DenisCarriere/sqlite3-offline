@@ -9,7 +9,6 @@
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 > Bundled library for [SQLite3](https://github.com/mapbox/node-sqlite3) for offline deployments.
-
 > Zero dependencies, zero external HTTP downloads.
 
 ## Install
