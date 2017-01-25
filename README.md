@@ -17,6 +17,8 @@
 $ npm install --save sqlite3-offline
 ```
 
+## Quickstart
+
 ```javascript
 const sqlite3 = require('sqlite3-offline').verbose()
 var db = new sqlite3.Database(':memory:')
