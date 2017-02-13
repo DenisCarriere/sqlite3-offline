@@ -1,16 +1,12 @@
 {
   "name": "sqlite3-offline",
-  "version": "3.1.10",
+  "version": "3.1.11",
   "description": "SQLite3 for offline",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
     "test": "npm run lint && jest --coverage",
     "lint": "standard"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DenisCarriere/sqlite3-offline.git"
   },
   "author": {
     "name": "MapBox",
@@ -36,10 +32,6 @@
     "Denis Carriere <carriere.denis@gmail.com>"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/DenisCarriere/sqlite3-offline/issues"
-  },
-  "homepage": "https://github.com/DenisCarriere/sqlite3-offline#readme",
   "keywords": [
     "sqlite3",
     "offline"
