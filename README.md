@@ -1,7 +1,6 @@
 # SQLite3 for offline
 
 [![Build Status](https://travis-ci.org/DenisCarriere/sqlite3-offline.svg?branch=master)](https://travis-ci.org/DenisCarriere/sqlite3-offline)
-[![Coverage Status](https://coveralls.io/repos/github/DenisCarriere/sqlite3-offline/badge.svg?branch=master)](https://coveralls.io/github/DenisCarriere/sqlite3-offline?branch=master)
 [![npm version](https://badge.fury.io/js/sqlite3-offline.svg)](https://badge.fury.io/js/sqlite3-offline)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DenisCarriere/sqlite3-offline/master/LICENSE)
 
@@ -50,10 +49,10 @@ db.close()
 
 ## Supported NodeJS Release
 
-- Node.js v7.x
-- Node.js v6.x
-- ~~Node.js v5.x~~
-- ~~Node.js v4.x~~
+- Node.js v7
+- Node.js v6
+- Node.js v5
+- Node.js v4
 
 
 ## License
