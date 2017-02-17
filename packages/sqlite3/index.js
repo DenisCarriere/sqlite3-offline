@@ -2,9 +2,9 @@ var path = require('path')
 var EventEmitter = require('events').EventEmitter
 var trace = require('./trace')
 var sqlite3
-if (process.platform === 'linux') { sqlite3 = module.exports = exports = require('@sqlite3/linux') }
-if (process.platform === 'darwin') { sqlite3 = module.exports = exports = require('@sqlite3/mac') }
-if (process.platform === 'win32') { sqlite3 = module.exports = exports = require('@sqlite3/windows') }
+if (process.platform === 'linux') { sqlite3 = module.exports = exports = require('sqlite3-offline-linux') }
+if (process.platform === 'darwin') { sqlite3 = module.exports = exports = require('sqlite3-offline-mac') }
+if (process.platform === 'win32') { sqlite3 = module.exports = exports = require('sqlite3-offline-windows') }
 
 function normalizeMethod (fn) {
   return function (sql) {
