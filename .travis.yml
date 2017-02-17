@@ -5,5 +5,3 @@ node_js:
 notifications:
   email:
     - carriere.denis@gmail.com
-after_success:
-  - 'cat ./coverage/lcov.info | coveralls'
