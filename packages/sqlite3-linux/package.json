@@ -1,5 +1,5 @@
 {
-  "name": "@sqlite3-offline/linux",
+  "name": "sqlite3-offline-linux",
   "version": "3.0.0",
   "description": "sqlite3 linux module",
   "main": "index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@sqlite3-offline/sqlite3",
+  "name": "sqlite3-offline",
   "version": "3.0.0",
   "description": "Bundled SQLite3 library for offline environments",
   "main": "index.js",
@@ -18,9 +18,9 @@
     "electron"
   ],
   "dependencies": {
-    "@sqlite3/linux": "^3.0.0",
-    "@sqlite3/mac": "^3.0.0",
-    "@sqlite3/windows": "^3.0.0"
+    "sqlite3-offline-linux": "^3.0.0",
+    "sqlite3-offline-mac": "^3.0.0",
+    "sqlite3-offline-windows": "^3.0.0"
   },
   "devDependencies": {
     "jest-cli": "^18.0.0",

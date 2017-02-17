@@ -1,5 +1,5 @@
 {
-  "name": "@sqlite3-offline/mac",
+  "name": "sqlite3-offline-mac",
   "version": "3.0.0",
   "description": "sqlite3 mac module",
   "main": "index.js",

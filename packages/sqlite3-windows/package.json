@@ -1,5 +1,5 @@
 {
-  "name": "@sqlite3-offline/windows",
+  "name": "sqlite3-offline-windows",
   "version": "3.0.0",
   "description": "sqlite3 windows module",
   "main": "index.js",
