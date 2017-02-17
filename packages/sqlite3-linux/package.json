@@ -1,0 +1,8 @@
+{
+  "name": "@sqlite3/linux",
+  "version": "3.0.0",
+  "description": "sqlite3 linux module",
+  "main": "index.js",
+  "author": "Denis Carriere <carriere.denis@gmail.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "@sqlite3/sqlite3",
+  "version": "3.0.0",
+  "description": "Bundled SQLite3 library for offline environments",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Denis Carriere <carriere.denis@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "sqlite3",
+    "offline",
+    "mac",
+    "linux",
+    "windows",
+    "electron"
+  ],
+  "dependencies": {
+    "@sqlite3/linux": "^3.0.0",
+    "@sqlite3/mac": "^3.0.0",
+    "@sqlite3/windows": "^3.0.0"
+  },
+  "devDependencies": {
+    "jest-cli": "^18.0.0",
+    "standard": "^8.6.0"
+  },
+  "jest": {
+    "verbose": true
+  },
+  "testEnvironment": "node",
+  "standard": {
+    "env": "jest"
+  }
+}
