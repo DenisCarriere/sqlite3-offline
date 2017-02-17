@@ -1,9 +1,14 @@
 {
   "name": "sqlite3-offline",
-  "version": "3.1.14",
+  "version": "3.1.15",
   "description": "Bundled SQLite3 library for offline environments",
   "main": "index.js",
   "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "trace.js"
+  ],
   "scripts": {
     "test": "jest"
   },
