@@ -24,9 +24,9 @@
     "electron"
   ],
   "dependencies": {
-    "sqlite3-offline-linux": "^3.1.8-1",
-    "sqlite3-offline-mac": "^3.1.8-1",
-    "sqlite3-offline-windows": "^3.1.8-1"
+    "sqlite3-offline-linux": "3.1.8-1",
+    "sqlite3-offline-darwin": "3.1.8-1",
+    "sqlite3-offline-win32": "3.1.8-1"
   },
   "devDependencies": {
     "decompress": "^4.2.0",
