@@ -17,6 +17,7 @@ function getVersion () {
     https.get(url, res => {
       let data = ''
       res.setEncoding('utf8')
+      if (res.statusCode !== 200) return reject(res.statusMessage)
       res.on('data', chunk => { data += chunk })
       res.on('end', () => resolve(JSON.parse(data).version))
     })
@@ -62,7 +63,7 @@ function getUrl (version, name) {
  * getS3('3.1.8', 'node-v46-linux-x64')
  * //= { Bucket: 'mapbox-node-binary', Key: `sqlite3/v3.1.8/node-v46-linux-x64.tar.gz` }
  */
-function getS3 (version, name) {
+function getS3 (version, name) { // eslint-disable-line
   return {
     Bucket: 'mapbox-node-binary',
     Key: `sqlite3/v${version}/${name}.tar.gz`
@@ -73,6 +74,7 @@ function download (url) {
   return new Promise((resolve, reject) => {
     https.get(url, res => {
       const buffer = []
+      if (res.statusCode !== 200) return reject(res.statusMessage)
       res.on('data', data => buffer.push(data))
       res.on('end', () => resolve(Buffer.concat(buffer)))
     })
@@ -81,8 +83,11 @@ function download (url) {
 
 const MODULES = [46, 47, 48, 50, 51, 53] // process.versions.modules
 const PLATFORMS = ['darwin', 'linux', 'win32'] // process.platform
-const ARCHS = ['x64', 'ia32'] // process.arch
+const ARCHS = ['ia32', 'x64', 'x86'] // process.arch
 
+/**
+ * Update Binaries Scripts
+ */
 async function main () {
   const version = await getVersion()
 
@@ -92,10 +97,13 @@ async function main () {
         const name = getName(MODULE, PLATFORM, ARCH)
         const filename = name + '.tar.gz'
         const url = getUrl(version, name)
-        console.log(`downloading ${filename}`)
-        fs.writeFileSync(filename, await download(url))
-        await decompress(filename, path.join(__dirname, '..', 'packages', `sqlite3-${PLATFORM}`))
-        fs.removeSync(filename)
+        const binary = await download(url).catch(error => console.error(error, url))
+        if (binary) {
+          console.info(`Success ${url}`)
+          fs.writeFileSync(filename, binary)
+          await decompress(filename, path.join(__dirname, '..', 'packages', `sqlite3-${PLATFORM}`))
+          fs.removeSync(filename)
+        }
       }
     }
   }
