@@ -1,11 +1,16 @@
 {
-  "private": true,
-  "version": "3.0.0",
+  "name": "sqlite3-offline",
+  "version": "3.1.8-0",
   "description": "Bundled SQLite3 library for offline environments",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "trace.js"
+  ],
   "scripts": {
-    "test": "npm run lint && lerna bootstrap && lerna run test",
-    "lint": "standard",
-    "update": "node ./scripts/update-binaries.js"
+    "test": "node test.js"
   },
   "author": "Denis Carriere <@DenisCarriere>",
   "license": "MIT",
@@ -17,18 +22,13 @@
     "windows",
     "electron"
   ],
-  "jest": {
-    "verbose": true,
-    "collectCoverage": true
-  },
-  "testEnvironment": "node",
-  "standard": {
-    "env": "jest"
+  "dependencies": {
+    "sqlite3-offline-linux": "^3.1.8-0",
+    "sqlite3-offline-mac": "^3.1.8-0",
+    "sqlite3-offline-windows": "^3.1.8-0"
   },
   "devDependencies": {
-    "decompress": "^4.2.0",
-    "fs-extra": "^3.0.1",
-    "lerna": "^2.0.0-rc.5",
-    "standard": "^8.6.0"
+    "standard": "^10.0.2",
+    "tape": "^4.7.0"
   }
 }
