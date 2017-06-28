@@ -1,6 +1,6 @@
 {
   "name": "sqlite3-offline",
-  "version": "3.1.8-0",
+  "version": "3.1.8-1",
   "description": "Bundled SQLite3 library for offline environments",
   "main": "index.js",
   "types": "index.d.ts",
@@ -10,7 +10,8 @@
     "trace.js"
   ],
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "update": "node ./scripts/update-binaries.js"
   },
   "author": "Denis Carriere <@DenisCarriere>",
   "license": "MIT",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "decompress": "^4.2.0",
     "fs-extra": "^3.0.1",
+    "lerna": "^2.0.0-rc.5",
     "standard": "^10.0.2",
     "tape": "^4.7.0"
   }

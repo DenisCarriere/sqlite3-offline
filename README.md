@@ -49,6 +49,7 @@ db.close()
 
 ## Supported NodeJS Release
 
+- Node.js v8
 - Node.js v7
 - Node.js v6
 - Node.js v5

@@ -3,6 +3,10 @@ const path = require('path')
 const https = require('https')
 const decompress = require('decompress')
 
+const MODULES = [46, 47, 48, 50, 51, 53, 57] // process.versions.modules
+const PLATFORMS = ['darwin', 'linux', 'win32'] // process.platform
+const ARCHS = ['ia32', 'x64', 'x86'] // process.arch
+
 /**
  * getVersion directly from GitHub repo package.json
  *
@@ -80,10 +84,6 @@ function download (url) {
     })
   })
 }
-
-const MODULES = [46, 47, 48, 50, 51, 53] // process.versions.modules
-const PLATFORMS = ['darwin', 'linux', 'win32'] // process.platform
-const ARCHS = ['ia32', 'x64', 'x86'] // process.arch
 
 /**
  * Update Binaries Scripts
