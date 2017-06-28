@@ -1,7 +1,7 @@
 {
-  "name": "sqlite3-offline-mac",
+  "name": "sqlite3-offline-darwin",
   "version": "3.1.17",
-  "description": "sqlite3 mac module",
+  "description": "sqlite3 darwin module",
   "main": "index.js",
   "author": "Denis Carriere <carriere.denis@gmail.com>",
   "license": "MIT"

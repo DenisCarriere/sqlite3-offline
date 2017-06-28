@@ -1,7 +1,7 @@
 {
-  "name": "sqlite3-offline-windows",
+  "name": "sqlite3-offline-win32",
   "version": "3.1.18",
-  "description": "sqlite3 windows module",
+  "description": "sqlite3 win32 module",
   "main": "index.js",
   "author": "Denis Carriere <carriere.denis@gmail.com>",
   "license": "MIT"

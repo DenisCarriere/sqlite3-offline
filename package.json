@@ -6,7 +6,7 @@
     "test": "npm run lint && lerna bootstrap && lerna run test",
     "lint": "standard"
   },
-  "author": "Denis Carriere <carriere.denis@gmail.com",
+  "author": "Denis Carriere <@DenisCarriere>",
   "license": "MIT",
   "keywords": [
     "sqlite3",
@@ -16,10 +16,6 @@
     "windows",
     "electron"
   ],
-  "devDependencies": {
-    "lerna": "2.0.0-beta.34",
-    "standard": "^8.6.0"
-  },
   "jest": {
     "verbose": true,
     "collectCoverage": true
@@ -27,5 +23,10 @@
   "testEnvironment": "node",
   "standard": {
     "env": "jest"
+  },
+  "devDependencies": {
+    "decompress": "^4.2.0",
+    "lerna": "^2.0.0-rc.5",
+    "standard": "^8.6.0"
   }
 }
