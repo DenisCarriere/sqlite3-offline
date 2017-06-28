@@ -28,6 +28,8 @@
     "sqlite3-offline-windows": "^3.1.8-0"
   },
   "devDependencies": {
+    "decompress": "^4.2.0",
+    "fs-extra": "^3.0.1",
     "standard": "^10.0.2",
     "tape": "^4.7.0"
   }

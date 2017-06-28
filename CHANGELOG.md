@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.8-0 - 2017-06-28
+
+- Add Windows 32bit binaries
+- Organize main package at root level
+- Automate binary updates
+
 ## 3.0.0 - 2017-02-17
 
 - Split project (mac, linux & windows) with Lerna

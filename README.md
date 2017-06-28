@@ -42,7 +42,7 @@ db.close()
 
 ## Supported Platforms
 
-- Windows x64
+- Windows x64 & ia32
 - MacOSX x64
 - Linux x64
 - Electron
@@ -53,7 +53,6 @@ db.close()
 - Node.js v6
 - Node.js v5
 - Node.js v4
-
 
 ## License
 
