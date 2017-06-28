@@ -1,4 +1,5 @@
-const fs = require('fs')
+const fs = require('fs-extra')
+const path = require('path')
 const https = require('https')
 const decompress = require('decompress')
 
@@ -16,7 +17,7 @@ function getVersion () {
     https.get(url, res => {
       let data = ''
       res.setEncoding('utf8')
-      res.on('data', chunk => data += chunk)
+      res.on('data', chunk => { data += chunk })
       res.on('end', () => resolve(JSON.parse(data).version))
     })
   })
@@ -91,30 +92,12 @@ async function main () {
         const name = getName(MODULE, PLATFORM, ARCH)
         const filename = name + '.tar.gz'
         const url = getUrl(version, name)
+        console.log(`downloading ${filename}`)
         fs.writeFileSync(filename, await download(url))
-        const files = await decompress(filename, '.')
-        console.log(files)
-        break
+        await decompress(filename, path.join(__dirname, '..', 'packages', `sqlite3-${PLATFORM}`))
+        fs.removeSync(filename)
       }
-      break
     }
-    break
   }
 }
 main()
-
-// const s3 = new AWS.S3()
-
-// const params = {
-//   Bucket: 'mapbox-node-binary',
-//   Key: 'sqlite3/v3.1.8/node-v51-darwin-x64.tar.gz'
-// }
-
-// s3.getObject(params, (error, data) => {
-//   fs.writeFileSync('node-v51-darwin-x64.tar.gz', data)
-// })
-
-// https.get('https://data.osmcanada.com', res => {
-//   res.on('data', data => console.log(data.toString()))
-// })
-// // const url = `aws s3 cp s3://mapbox-node-binary/sqlite3/v3.1.8/node-v51-darwin-x64.tar.gz`

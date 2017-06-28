@@ -4,7 +4,8 @@
   "description": "Bundled SQLite3 library for offline environments",
   "scripts": {
     "test": "npm run lint && lerna bootstrap && lerna run test",
-    "lint": "standard"
+    "lint": "standard",
+    "update": "node ./scripts/update-binaries.js"
   },
   "author": "Denis Carriere <@DenisCarriere>",
   "license": "MIT",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "decompress": "^4.2.0",
+    "fs-extra": "^3.0.1",
     "lerna": "^2.0.0-rc.5",
     "standard": "^8.6.0"
   }
