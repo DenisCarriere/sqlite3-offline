@@ -46,6 +46,9 @@ db.close()
 - MacOSX x64
 - Linux x64
 - Electron
+  - v1.5
+  - v1.6
+  - v1.7
 
 ## Supported NodeJS Release
 
