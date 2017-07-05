@@ -1,6 +1,6 @@
 {
   "name": "sqlite3-offline",
-  "version": "3.1.8-1",
+  "version": "3.1.8-2",
   "description": "Bundled SQLite3 library for offline environments",
   "main": "index.js",
   "types": "index.d.ts",
@@ -24,9 +24,9 @@
     "electron"
   ],
   "dependencies": {
-    "sqlite3-offline-linux": "3.1.8-1",
-    "sqlite3-offline-darwin": "3.1.8-1",
-    "sqlite3-offline-win32": "3.1.8-1"
+    "sqlite3-offline-linux": "3.1.8-2",
+    "sqlite3-offline-darwin": "3.1.8-2",
+    "sqlite3-offline-win32": "3.1.8-2"
   },
   "devDependencies": {
     "decompress": "^4.2.0",
