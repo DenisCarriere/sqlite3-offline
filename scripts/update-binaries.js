@@ -101,7 +101,7 @@ async function main () {
         if (binary) {
           console.info(`Success ${url}`)
           fs.writeFileSync(filename, binary)
-          await decompress(filename, path.join(__dirname, '..', 'packages', `sqlite3-${PLATFORM}`))
+          await decompress(filename, path.join(__dirname, '..', 'binaries', `sqlite3-${PLATFORM}`))
           fs.removeSync(filename)
         }
       }

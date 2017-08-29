@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.1.8-3 - 2017-08-28
+
+- Convert to pure ES5+ (NodeJS 4 compatible)
+- Removed Lerna Monorepo (no dependencies)
+
 ## 3.1.8-0 - 2017-06-28
 
 - Add Windows 32bit binaries
