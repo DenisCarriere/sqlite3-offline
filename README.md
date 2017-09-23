@@ -58,6 +58,10 @@ db.close()
 - Node.js v5
 - Node.js v4
 
+## Related
+
+- [mbtiles-offline](https://github.com/DenisCarriere/mbtiles-offline)
+
 ## License
 
 BSD © [Mapbox](https://github.com/mapbox/node-sqlite3)
