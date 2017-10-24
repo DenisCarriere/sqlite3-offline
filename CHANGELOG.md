@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.2.0 - 2017-10-23
+
+- Bump to minor version instead of dev versions
+
 ## 3.1.8-3 - 2017-08-28
 
 - Convert to pure ES5+ (NodeJS 4 compatible)
