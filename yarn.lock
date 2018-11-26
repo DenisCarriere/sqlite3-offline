@@ -2164,18 +2164,6 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
 
-sqlite3-offline-darwin@3.1.8-2:
-  version "3.1.8-2"
-  resolved "https://registry.yarnpkg.com/sqlite3-offline-darwin/-/sqlite3-offline-darwin-3.1.8-2.tgz#022ed30411f76af6d1123083b647e20f8517b3d5"
-
-sqlite3-offline-linux@3.1.8-2:
-  version "3.1.8-2"
-  resolved "https://registry.yarnpkg.com/sqlite3-offline-linux/-/sqlite3-offline-linux-3.1.8-2.tgz#ccb8f9ec606ad3aebc1cb789428eafef344a3847"
-
-sqlite3-offline-win32@3.1.8-2:
-  version "3.1.8-2"
-  resolved "https://registry.yarnpkg.com/sqlite3-offline-win32/-/sqlite3-offline-win32-3.1.8-2.tgz#fa2e2d6b9d8c5a7b92554030591fb4f13f64391e"
-
 standard-engine@~7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/standard-engine/-/standard-engine-7.0.0.tgz#ebb77b9c8fc2c8165ffa353bd91ba0dff41af690"
