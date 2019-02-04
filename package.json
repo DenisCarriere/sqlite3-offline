@@ -1,5 +1,5 @@
 {
-  "name": "sqlite3",
+  "name": "sqlite3-offline",
   "version": "3.2.0",
   "description": "Bundled SQLite3 library for offline environments",
   "main": "index.js",
