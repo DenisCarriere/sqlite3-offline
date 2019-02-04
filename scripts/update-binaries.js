@@ -3,9 +3,12 @@ const path = require('path')
 const https = require('https')
 const decompress = require('decompress')
 
-const MODULES = [46, 47, 48, 50, 51, 53, 57] // process.versions.modules
+// NODE
+const MODULES = [46, 47, 48, 50, 51, 53, 57, 59, 64, 67] // process.versions.modules
 const PLATFORMS = ['darwin', 'linux', 'win32'] // process.platform
 const ARCHS = ['ia32', 'x64', 'x86'] // process.arch
+
+const ELECTRON_MODULES = ["1.3", "1.6", "1.7", "1.8", "2.0", "3.0", "4.0"] // process.versions.modules
 
 /**
  * getVersion directly from GitHub repo package.json
@@ -41,6 +44,21 @@ function getVersion () {
  */
 function getName (modules, platform, arch) {
   return `node-v${modules}-${platform}-${arch}`
+}
+
+/**
+ * getElectronName
+ *
+ * @param {number} modules
+ * @param {string} platform
+ * @param {string} arch
+ * @return {string}
+ * @example
+ * const name = getElectronName("4.0", 'linux', 'x64')
+ * //= 'electron-v4.0-linux-x64'
+ */
+function getElectronName (modules, platform, arch) {
+  return `electron-v${modules}-${platform}-${arch}`
 }
 
 /**
@@ -91,6 +109,23 @@ function download (url) {
 async function main () {
   const version = await getVersion()
 
+  for (const MODULE of ELECTRON_MODULES) {
+    for (const PLATFORM of PLATFORMS) {
+      for (const ARCH of ARCHS) {
+        const name = getElectronName(MODULE, PLATFORM, ARCH)
+        const filename = name + '.tar.gz'
+        const url = getUrl(version, name)
+        const binary = await download(url).catch(error => console.error(error, url))
+        if (binary) {
+          console.info(`Success ${url}`)
+          fs.writeFileSync(filename, binary)
+          await decompress(filename, path.join(__dirname, '..', 'binaries', `sqlite3-${PLATFORM}`))
+          fs.removeSync(filename)
+        }
+      }
+    }
+  }
+
   for (const MODULE of MODULES) {
     for (const PLATFORM of PLATFORMS) {
       for (const ARCH of ARCHS) {
@@ -107,5 +142,6 @@ async function main () {
       }
     }
   }
+
 }
 main()
