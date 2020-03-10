@@ -52,6 +52,11 @@ db.close()
 
 ## Supported NodeJS Release
 
+- Node.js v13 (79)
+- Node.js v12 (72)
+- Node.js v11 (69)
+- Node.js v10 (64)
+- Node.js v9 (59)
 - Node.js v8
 - Node.js v7
 - Node.js v6

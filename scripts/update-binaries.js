@@ -4,7 +4,7 @@ const https = require('https')
 const decompress = require('decompress')
 
 // NODE
-const MODULES = [46, 47, 48, 50, 51, 53, 57, 59, 64, 67] // process.versions.modules
+const MODULES = [46, 47, 48, 50, 51, 53, 57, 59, 64, 67, 72, 79] // process.versions.modules
 const PLATFORMS = ['darwin', 'linux', 'win32'] // process.platform
 const ARCHS = ['ia32', 'x64', 'x86'] // process.arch
 

@@ -1,6 +1,6 @@
 {
   "name": "sqlite3-offline",
-  "version": "4.0.6",
+  "version": "4.1.1",
   "description": "Bundled SQLite3 library for offline environments",
   "main": "index.js",
   "types": "index.d.ts",
