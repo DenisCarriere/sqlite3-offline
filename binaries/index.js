@@ -15,7 +15,7 @@ if (ELECTRON) {
 } else NAME = `node-v${MODULES}-${PLATFORM}-${ARCH}`
 
 if (fs.existsSync(path.join(__dirname, 'sqlite3-' + PLATFORM, NAME))) {
-  const sqlite3 = require(path.join(__dirname, 'sqlite3-' + PLATFORM, NAME, 'node_sqlite3'))
+  const sqlite3 = require(path.join(__dirname, 'sqlite3-' + PLATFORM, NAME, 'node_sqlite3.node'))
   module.exports = sqlite3
 } else {
   throw new Error(`NodeJS ${NODE} Module ${MODULES} not compatible`)
