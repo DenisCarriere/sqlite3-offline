@@ -4,11 +4,12 @@ const https = require('https')
 const decompress = require('decompress')
 
 // NODE
-const MODULES = [46, 47, 48, 50, 51, 53, 57, 59, 64, 67, 72, 79] // process.versions.modules
+// Support platform
+// Windows x64 & ia32
+// MacOSX x64
+// Linux x64
 const PLATFORMS = ['darwin', 'linux', 'win32'] // process.platform
 const ARCHS = ['ia32', 'x64', 'x86'] // process.arch
-
-const ELECTRON_MODULES = ["1.3", "1.6", "1.7", "1.8", "2.0", "3.0", "4.0"] // process.versions.modules
 
 /**
  * getVersion directly from GitHub repo package.json
@@ -16,7 +17,7 @@ const ELECTRON_MODULES = ["1.3", "1.6", "1.7", "1.8", "2.0", "3.0", "4.0"] // pr
  * @returns {Promise<string>} version
  * @example
  * const version = await getVersion()
- * //= '3.1.8'
+ * //= '5.0.2'
  */
 function getVersion () {
   const url = 'https://raw.githubusercontent.com/mapbox/node-sqlite3/master/package.json'
@@ -26,7 +27,10 @@ function getVersion () {
       res.setEncoding('utf8')
       if (res.statusCode !== 200) return reject(res.statusMessage)
       res.on('data', chunk => { data += chunk })
-      res.on('end', () => resolve(JSON.parse(data).version))
+      res.on('end', () => {
+        const packageJson = JSON.parse(data)
+        resolve({version: packageJson.version, napiVersion: packageJson.binary.napi_versions[0]})
+      })
     })
   })
 }
@@ -34,31 +38,16 @@ function getVersion () {
 /**
  * getName
  *
- * @param {number} modules
+ * @param {string} napiVersion
  * @param {string} platform
  * @param {string} arch
  * @return {string}
  * @example
  * const name = getName(46, 'linux', 'x64')
- * //= 'node-v46-linux-x64'
+ * //= 'napi-v3-linux-x64'
  */
-function getName (modules, platform, arch) {
-  return `node-v${modules}-${platform}-${arch}`
-}
-
-/**
- * getElectronName
- *
- * @param {number} modules
- * @param {string} platform
- * @param {string} arch
- * @return {string}
- * @example
- * const name = getElectronName("4.0", 'linux', 'x64')
- * //= 'electron-v4.0-linux-x64'
- */
-function getElectronName (modules, platform, arch) {
-  return `electron-v${modules}-${platform}-${arch}`
+function getName (napiVersion, platform, arch) {
+  return `napi-v${napiVersion}-${platform}-${arch}`
 }
 
 /**
@@ -68,8 +57,7 @@ function getElectronName (modules, platform, arch) {
  * @param {string} name
  * @returns {string} url
  * @example
- * getUrl('3.1.8', 'node-v46-linux-x64')
- * //= 'https://mapbox-node-binary.s3.amazonaws.com/sqlite3/v3.1.8/node-v46-linux-x64.tar.gz'
+ * //= 'https://mapbox-node-binary.s3.amazonaws.com/sqlite3/v5.0.2/napi-v3-linux-x64.tar.gz'
  */
 function getUrl (version, name) {
   return `https://mapbox-node-binary.s3.amazonaws.com/sqlite3/v${version}/${name}.tar.gz`
@@ -99,7 +87,7 @@ function download (url) {
       if (res.statusCode !== 200) return reject(res.statusMessage)
       res.on('data', data => buffer.push(data))
       res.on('end', () => resolve(Buffer.concat(buffer)))
-    })
+    }).on('error', (e) => console.log('download error', e))
   })
 }
 
@@ -107,12 +95,11 @@ function download (url) {
  * Update Binaries Scripts
  */
 async function main () {
-  const version = await getVersion()
+  const {version, napiVersion} = await getVersion()
 
-  for (const MODULE of ELECTRON_MODULES) {
     for (const PLATFORM of PLATFORMS) {
       for (const ARCH of ARCHS) {
-        const name = getElectronName(MODULE, PLATFORM, ARCH)
+        const name = getName(napiVersion, PLATFORM, ARCH)
         const filename = name + '.tar.gz'
         const url = getUrl(version, name)
         const binary = await download(url).catch(error => console.error(error, url))
@@ -124,24 +111,6 @@ async function main () {
         }
       }
     }
-  }
-
-  for (const MODULE of MODULES) {
-    for (const PLATFORM of PLATFORMS) {
-      for (const ARCH of ARCHS) {
-        const name = getName(MODULE, PLATFORM, ARCH)
-        const filename = name + '.tar.gz'
-        const url = getUrl(version, name)
-        const binary = await download(url).catch(error => console.error(error, url))
-        if (binary) {
-          console.info(`Success ${url}`)
-          fs.writeFileSync(filename, binary)
-          await decompress(filename, path.join(__dirname, '..', 'binaries', `sqlite3-${PLATFORM}`))
-          fs.removeSync(filename)
-        }
-      }
-    }
-  }
 
 }
 main()

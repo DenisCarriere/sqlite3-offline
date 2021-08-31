@@ -3,7 +3,7 @@ var EventEmitter = require('events').EventEmitter
 var trace = require('./trace')
 var sqlite3 = module.exports = exports = require('./binaries')
 
-function normalizeMethod (fn) {
+function normalizeMethod(fn) {
   return function (sql) {
     var errBack
     var args = Array.prototype.slice.call(arguments, 1)
@@ -20,7 +20,7 @@ function normalizeMethod (fn) {
   }
 }
 
-function inherits (target, source) {
+function inherits(target, source) {
   for (var k in source.prototype) {
     target.prototype[k] = source.prototype[k]
   }
@@ -35,7 +35,7 @@ sqlite3.cached = {
 
     var db
     file = path.resolve(file)
-    function cb () { callback.call(db, null) }
+    function cb() { callback.call(db, null) }
 
     if (!sqlite3.cached.objects[file]) {
       db = sqlite3.cached.objects[file] = new Database(file, a, b)
@@ -56,9 +56,11 @@ sqlite3.cached = {
 
 var Database = sqlite3.Database
 var Statement = sqlite3.Statement
+var Backup = sqlite3.Backup
 
 inherits(Database, EventEmitter)
 inherits(Statement, EventEmitter)
+inherits(Backup, EventEmitter)
 
 // Database#prepare(sql, [bind1, bind2, ...], [callback])
 Database.prototype.prepare = normalizeMethod(function (statement, params) {
@@ -96,6 +98,23 @@ Database.prototype.map = normalizeMethod(function (statement, params) {
   return this
 })
 
+// Database#backup(filename, [callback])
+// Database#backup(filename, destName, sourceName, filenameIsDest, [callback])
+Database.prototype.backup = function () {
+  var backup
+  if (arguments.length <= 2) {
+    // By default, we write the main database out to the main database of the named file.
+    // This is the most likely use of the backup api.
+    backup = new Backup(this, arguments[0], 'main', 'main', true, arguments[1])
+  } else {
+    // Otherwise, give the user full control over the sqlite3_backup_init arguments.
+    backup = new Backup(this, arguments[0], arguments[1], arguments[2], arguments[3], arguments[4])
+  }
+  // Per the sqlite docs, exclude the following errors as non-fatal by default.
+  backup.retryErrors = [sqlite3.BUSY, sqlite3.LOCKED]
+  return backup
+}
+
 Statement.prototype.map = function () {
   var params = Array.prototype.slice.call(arguments)
   var callback = params.pop()
@@ -125,7 +144,7 @@ Statement.prototype.map = function () {
 
 var isVerbose = false
 
-var supportedEvents = [ 'trace', 'profile', 'insert', 'update', 'delete' ]
+var supportedEvents = ['trace', 'profile', 'insert', 'update', 'delete']
 
 Database.prototype.addListener = Database.prototype.on = function (type) {
   var val = EventEmitter.prototype.addListener.apply(this, arguments)
