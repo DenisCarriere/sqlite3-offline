@@ -1,7 +1,7 @@
 // Inspired by https://github.com/tlrobinson/long-stack-traces
 var util = require('util')
 
-function extendTrace (object, property, pos) {
+function extendTrace(object, property, pos) {
   var old = object[property]
   object[property] = function () {
     var error = new Error()
@@ -14,18 +14,15 @@ function extendTrace (object, property, pos) {
     if (pos < 0) pos += arguments.length
     var cb = arguments[pos]
     if (typeof arguments[pos] === 'function') {
-      arguments[pos] = function replacement () {
-        try {
-          return cb.apply(this, arguments)
-        } catch (err) {
-          if (err && err.stack && !err.__augmented) {
-            err.stack = filter(err).join('\n')
-            err.stack += '\n--> in ' + name
-            err.stack += '\n' + filter(error).slice(1).join('\n')
-            err.__augmented = true
-          }
-          throw err
+      arguments[pos] = function replacement() {
+        var err = arguments[0]
+        if (err && err.stack && !err.__augmented) {
+          err.stack = filter(err).join('\n')
+          err.stack += '\n--> in ' + name
+          err.stack += '\n' + filter(error).slice(1).join('\n')
+          err.__augmented = true
         }
+        return cb.apply(this, arguments)
       }
     }
     return old.apply(this, arguments)
@@ -33,7 +30,7 @@ function extendTrace (object, property, pos) {
 }
 exports.extendTrace = extendTrace
 
-function filter (error) {
+function filter(error) {
   return error.stack.split('\n').filter(function (line) {
     return line.indexOf(__filename) < 0
   })

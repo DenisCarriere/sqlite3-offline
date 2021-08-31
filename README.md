@@ -10,6 +10,8 @@
 > Bundled library for [SQLite3](https://github.com/mapbox/node-sqlite3) for offline deployments.
 >
 > Zero dependencies, zero external HTTP downloads.
+>
+> After version upgrade to v5.0.0, Offical [SQLite3](https://github.com/mapbox/node-sqlite3) use Node-API to build native addons so that we can use one prebuild native library support across versions of Node.js. But Unfortunately, some old Node release and Electron version has been end of support.
 
 ## Install
 
@@ -45,14 +47,28 @@ db.close()
 - Windows x64 & ia32
 - MacOSX x64
 - Linux x64
-- Electron
+- Electron (Version below v5.0.0)
   - v1.5
   - v1.6
   - v1.7
   - v8.2
+- Electron (Version after v5.0.0)
+  - v6.0
+  - v6.1
+  - v7.0
+  - v6.1
+  - v8.0
+  - v8.1
+  - v8.2
 
 ## Supported NodeJS Release
+Version after v5.0.0
+- Node.js v14 (83)
+- Node.js v13 (79)
+- Node.js v12 (72)
+- Node.js v11 (69)
 
+Version below v5.0.0
 - Node.js v13 (79)
 - Node.js v12 (72)
 - Node.js v11 (69)
